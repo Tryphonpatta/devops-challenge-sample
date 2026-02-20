@@ -11,7 +11,7 @@ provider "docker" {
 }
 
 resource "docker_image" "jenkins" {
-  name = "jenkins/jenkins:lts"
+  name = "jenkins/jenkins:latest"
   keep_locally = false
 }
 
@@ -21,5 +21,9 @@ resource "docker_container" "jenkins" {
   ports {
 	internal = 8080
 	external = 8080
+  }
+  ports {
+	internal = 50000
+	external = 50000
   }
 }
